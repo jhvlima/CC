@@ -1,0 +1,13 @@
+WS=1
+PLUS=2
+MINUS=3
+TIMES=4
+OVER=5
+POS_INT=6
+NEG_INT=7
+POS_REAL=8
+NEG_REAL=9
+'+'=2
+'-'=3
+'*'=4
+'/'=5

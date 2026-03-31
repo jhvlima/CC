@@ -1,0 +1,11 @@
+WS=1
+IF=2
+ELSE=3
+TRUE=4
+ASSIGN=5
+STRING=6
+ID=7
+'if'=2
+'else'=3
+'true'=4
+'='=5
