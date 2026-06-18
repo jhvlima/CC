@@ -1,0 +1,64 @@
+@startuml astpackage
+
+skinparam dpi 100
+skinparam ClassAttributeFontSize 9
+skinparam ClassFontSize 10
+skinparam ClassFontStyle bold
+skinparam ArrowFontSize 9
+skinparam ClassBackgroundColor APPLICATION 
+skinparam ClassBorderThickness 1
+hide circle
+hide empty methods
+
+abstract class ASTNode
+
+' ProgramNode
+ASTNode <|-- ProgramNode
+class ProgramNode
+{
+    varTable : Map<String,Variable>
+}
+ProgramNode *-> "*" StatementNode : statements
+
+' StatementNodes
+abstract class StatementNode
+ASTNode <|-- StatementNode 
+StatementNode  <|-- PrintStatementNode
+class PrintStatementNode
+{
+    var : Variable
+}
+StatementNode  <|-- AssignmentStatementNode
+class AssignmentStatementNode
+{
+    var : Variable
+}
+AssignmentStatementNode *-> "1" ExprNode : expression
+
+' ExprNodes
+abstract class ExprNode
+ASTNode <|- ExprNode 
+
+ExprNode <|-- IntNode
+class IntNode {
+    value : int
+}
+
+ExprNode <|-- IdExpressionNode
+class IdExpressionNode {
+    var : Variable
+}
+
+' BinOpNodes
+abstract class BinOpNode
+ExprNode <|-- BinOpNode 
+BinOpNode *--> "1" ExprNode : left
+BinOpNode *--> "1" ExprNode : right
+BinOpNode <|-- AddNode 
+BinOpNode <|-- SubNode 
+BinOpNode <|-- MulNode
+BinOpNode <|-- DivNode
+
+
+
+@enduml
